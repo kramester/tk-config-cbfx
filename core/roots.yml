@@ -73,12 +73,12 @@ primary:
     shotgun_storage_id: 3
     default: true
 
-amc_projects:
-    description: High speed storage for AMC projects
-    shotgun_storage_id: 36
-    # default: true
+# primary:
+#     description: High speed storage for AMC projects
+#     shotgun_storage_id: 36
+#     default: true
 
-hbo_projects:
-    description: High speed storage for HBO projects
-    shotgun_storage_id: 37
-    # default: true
+# primary:
+#     description: High speed storage for HBO projects
+#     shotgun_storage_id: 37
+#     default: true
