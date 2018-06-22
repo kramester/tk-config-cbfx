@@ -27,6 +27,8 @@
 # {Shot}. The section below tells Sgtk which data types and formats to expect for each key.
 #
 keys:
+    Episode:
+        type: str
     Sequence:
         type: str
     Shot:
@@ -89,6 +91,10 @@ keys:
         alias: DD
     project:
         type: str
+    track:
+        type: str
+    tk_version:
+        type: str
 
     # These are used for the Mari UDIM pipeline:
     UDIM:
@@ -138,9 +144,9 @@ paths:
     #
     # These don't require the standard formatting (with definition and root_name) because they
     # will be set within each template that uses the alias.
-    shot_root: sequences/{Sequence}/{Shot}/{Step}
+    shot_root: shots/{Episode}/{Sequence}/{Shot}/{Step}
     asset_root: assets/{sg_asset_type}/{Asset}/{Step}
-    sequence_root: sequences/{Sequence}
+    sequence_root: shots/{Episode}/{Sequence}
 
 
     ##########################################################################################
@@ -334,14 +340,22 @@ paths:
     nuke_shot_publish:
         definition: '@shot_root/publish/nuke/{name}.v{version}.nk'
     # write node outputs
-    nuke_shot_render_mono_dpx:
-        definition: '@shot_root/work/images/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.dpx'
-    nuke_shot_render_pub_mono_dpx:
-        definition: '@shot_root/publish/elements/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.dpx'
-    nuke_shot_render_stereo:
-        definition: '@shot_root/work/images/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
-    nuke_shot_render_pub_stereo:
-        definition: '@shot_root/publish/elements/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
+    nuke_shot_render_mono_exr:
+        definition: '@shot_root/work/images/{name}/v{version}/{Shot}_{name}_{nuke.output}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.exr'
+    nuke_shot_render_pub_mono_exr:
+        definition: '@shot_root/publish/elements/{name}/v{version}/{Shot}_{name}_{nuke.output}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.exr'
+    nuke_shot_render_mono_tga:
+        definition: '@shot_root/work/images/{name}/v{version}/{Shot}_{name}_{nuke.output}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.tga'
+    nuke_shot_render_pub_mono_tga:
+        definition: '@shot_root/publish/elements/{name}/v{version}/{Shot}_{name}_{nuke.output}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.tga'
+    # nuke_shot_render_mono_dpx:
+        # definition: '@shot_root/work/images/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.dpx'
+    # nuke_shot_render_pub_mono_dpx:
+        # definition: '@shot_root/publish/elements/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.dpx'
+    # nuke_shot_render_stereo:
+        # definition: '@shot_root/work/images/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
+    # nuke_shot_render_pub_stereo:
+        # definition: '@shot_root/publish/elements/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
     # review output
     shot_quicktime_quick:
         definition: '@shot_root/review/quickdaily/{Shot}_{name}_{iteration}.mov'
@@ -354,9 +368,13 @@ paths:
 
     # export of shot asset data from hiero
     hiero_plate_path:
-        definition: 'sequences/{Sequence}/{Shot}/editorial/{YYYY}_{MM}_{DD}/plates/{project}_{Shot}.mov'
+        definition: '@sequence_root/{Shot}/editorial/publish/elements/{Shot}_{track}/{Shot}_{track}.{SEQ}.exr'
     hiero_render_path:
-        definition: 'sequences/{Sequence}/{Shot}/editorial/{YYYY}_{MM}_{DD}/renders/{project}_{Shot}.{SEQ}.dpx'
+        definition: '@shot_root/publish/elements/comp/v{tk_version}/{Shot}_comp_out/{Shot}_comp_out_v{tk_version}.{SEQ}.exr'
+    # hiero_plate_path:
+        # definition: 'sequences/{Sequence}/{Shot}/editorial/{YYYY}_{MM}_{DD}/plates/{project}_{Shot}.mov'
+    # hiero_render_path:
+        # definition: 'sequences/{Sequence}/{Shot}/editorial/{YYYY}_{MM}_{DD}/renders/{project}_{Shot}.{SEQ}.dpx'
 
     ##########################################################################################
     # Asset pipeline

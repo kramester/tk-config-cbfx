@@ -16,12 +16,16 @@ includes:
 ################################################################################
 
 settings.tk-hiero-export:
+  custom_template_fields: [{keyword: Episode, description: The episode name}]
+  default_task_filter: "[['step.Step.code', 'is', 'comp']]"
+  hook_resolve_custom_strings: '{config}/hiero_resolve_custom_strings.py'
+  hook_get_shot: '{config}/hiero_get_shot.py'
   nuke_script_toolkit_write_nodes:
-  - {channel: stereoexr32, name: 'Stereo Exr, 32 bit'}
-  - {channel: stereoexr16, name: 'Stereo Exr, 16 bit'}
-  - {channel: monodpx, name: Mono Dpx}
+  - {channel: out, name: 'EXR'}
+  - {channel: cc, name: 'TGA'}
   template_nuke_script_path: nuke_shot_work
   template_plate_path: hiero_plate_path
+  # template_render_path: nuke_shot_render_mono_exr
   template_render_path: hiero_render_path
   template_version: hiero_version
   location: "@apps.tk-hiero-export.location"
