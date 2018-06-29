@@ -67,6 +67,11 @@ engines.tk-photoshopcc.location:
   name: tk-photoshopcc
   version: v1.6.0
 
+# AfterEffects
+engines.tk-aftereffectscc.location:
+  type: dev
+  path: S:\shotgun\engines\tk-aftereffectscc
+
 # Shell
 engines.tk-shell.location:
   type: app_store
