@@ -70,8 +70,7 @@ settings.tk-nuke.hiero.project:
     name: "Open in Shotgun"
     requires_selection: true
   menu_favourites:
-  - app_instance: tk-multi-workfiles2
-    name: "File Open..."
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
   location: "@engines.tk-nuke.location"
 
 ################################################################################
@@ -88,7 +87,7 @@ settings.tk-nuke.asset:
     tk-nuke-quickreview:
       location: "@apps.tk-nuke-quickreview.location"
   menu_favourites:
-  - {app_instance: tk-multi-workfiles2, name: File Open...}
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
   location: "@engines.tk-nuke.location"
 
 # asset_step
@@ -109,10 +108,10 @@ settings.tk-nuke.asset_step:
     #   location: "@apps.tk-nuke-quickreview.location"
     tk-nuke-writenode: "@settings.tk-nuke-writenode.asset"
   menu_favourites:
-  - {app_instance: tk-multi-workfiles2, name: File Open...}
-  - {app_instance: tk-multi-snapshot, name: Snapshot...}
-  - {app_instance: tk-multi-workfiles2, name: File Save...}
-  - {app_instance: tk-multi-publish2, name: Publish...}
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
+  - {app_instance: tk-multi-snapshot, name: Snapshot..., hotkey: "alt+shift+s"}
+  - {app_instance: tk-multi-workfiles2, name: File Save..., hotkey: "ctrl+shift+s"}
+  - {app_instance: tk-multi-publish2, name: Publish..., hotkey: "F6"}
   location: "@engines.tk-nuke.location"
 
 # project
@@ -126,7 +125,7 @@ settings.tk-nuke.project:
     # tk-nuke-quickreview:
     #   location: "@apps.tk-nuke-quickreview.location"
   menu_favourites:
-  - {app_instance: tk-multi-workfiles2, name: File Open...}
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
   location: "@engines.tk-nuke.location"
 
 # sequence
@@ -140,7 +139,7 @@ settings.tk-nuke.sequence:
     # tk-nuke-quickreview:
     #   location: "@apps.tk-nuke-quickreview.location"
   menu_favourites:
-  - {app_instance: tk-multi-workfiles2, name: File Open...}
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
   location: "@engines.tk-nuke.location"
 
 # shot
@@ -154,7 +153,7 @@ settings.tk-nuke.shot:
     # tk-nuke-quickreview:
     #   location: "@apps.tk-nuke-quickreview.location"
   menu_favourites:
-  - {app_instance: tk-multi-workfiles2, name: File Open...}
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
   location: "@engines.tk-nuke.location"
 
 # shot_step
@@ -177,10 +176,10 @@ settings.tk-nuke.shot_step:
     #   location: "@apps.tk-nuke-quickreview.location"
     tk-nuke-writenode: "@settings.tk-nuke-writenode.shot"
   menu_favourites:
-  - {app_instance: tk-multi-workfiles2, name: File Open...}
-  - {app_instance: tk-multi-snapshot, name: Snapshot...}
-  - {app_instance: tk-multi-workfiles2, name: File Save...}
-  - {app_instance: tk-multi-publish2, name: Publish...}
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
+  - {app_instance: tk-multi-snapshot, name: Snapshot..., hotkey: "alt+shift+s"}
+  - {app_instance: tk-multi-workfiles2, name: File Save..., hotkey: "ctrl+shift+s"}
+  - {app_instance: tk-multi-publish2, name: Publish..., hotkey: "F6"}
   location: "@engines.tk-nuke.location"
 
 ################################################################################
@@ -222,8 +221,7 @@ settings.tk-nuke.nukestudio.asset_step:
     name: "Publish..."
     requires_selection: true
   menu_favourites:
-  - app_instance: tk-multi-workfiles2
-    name: "File Open..."
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
   location: '@engines.tk-nuke.location'
 
 # project
@@ -270,8 +268,7 @@ settings.tk-nuke.nukestudio.project:
     name: "Open in Shotgun"
     requires_selection: true
   menu_favourites:
-  - app_instance: tk-multi-workfiles2
-    name: File Open...
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
   location: '@engines.tk-nuke.location'
 
 # shot_step
@@ -310,6 +307,5 @@ settings.tk-nuke.nukestudio.shot_step:
     name: "Publish..."
     requires_selection: true
   menu_favourites:
-  - app_instance: tk-multi-workfiles2
-    name: "File Open..."
+  - {app_instance: tk-multi-workfiles2, name: File Open..., hotkey: "ctrl+o"}
   location: '@engines.tk-nuke.location'

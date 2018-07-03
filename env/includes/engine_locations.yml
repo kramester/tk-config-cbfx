@@ -50,16 +50,18 @@ engines.tk-maya.location:
   version: v0.9.3
 
 # Motion Builder
-# engines.tk-motionbuilder.location:
-#   type: app_store
-#   name: tk-motionbuilder
-#   version: v0.4.2
+engines.tk-motionbuilder.location:
+  type: app_store
+  name: tk-motionbuilder
+  version: v0.4.2
 
 # Nuke
 engines.tk-nuke.location:
-  type: app_store
-  name: tk-nuke
-  version: v0.11.0
+  type: dev
+  path: R:\code\work\anthony.kramer\shotgun\engines\tk-nuke-cbfx
+  # type: app_store
+  # name: tk-nuke
+  # version: v0.11.0
 
 # Photoshop
 engines.tk-photoshopcc.location:

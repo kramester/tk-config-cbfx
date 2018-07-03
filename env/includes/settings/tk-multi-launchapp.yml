@@ -20,6 +20,7 @@ includes:
 settings.tk-multi-launchapp:
   use_software_entity: true
   hook_before_register_command: "{config}/tk-multi-launchapp/before_register_command.py"
+  hook_before_app_launch: "{config}/tk-multi-launchapp/before_app_launch.py"
   location: "@apps.tk-multi-launchapp.location"
 
 # shotgun
@@ -55,8 +56,8 @@ settings.tk-multi-launchapp.hiero:
 #   location: "@apps.tk-multi-launchapp.location"
 
 # motionbuilder
-# settings.tk-multi-launchapp.motionbuilder:
-#   engine: tk-motionbuilder
-#   windows_path: "@path.windows.motionbuilder"
-#   menu_name: MotionBuilder
-#   location: "@apps.tk-multi-launchapp.location"
+settings.tk-multi-launchapp.motionbuilder:
+  engine: tk-motionbuilder
+  windows_path: "@path.windows.motionbuilder"
+  menu_name: MotionBuilder
+  location: "@apps.tk-multi-launchapp.location"
