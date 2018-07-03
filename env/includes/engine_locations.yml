@@ -58,7 +58,7 @@ engines.tk-motionbuilder.location:
 # Nuke
 engines.tk-nuke.location:
   type: dev
-  path: R:\code\work\anthony.kramer\shotgun\engines\tk-nuke-cbfx
+  path: R:\code\work\anthony.kramer\shotgun\engines\tk-nuke
   # type: app_store
   # name: tk-nuke
   # version: v0.11.0
