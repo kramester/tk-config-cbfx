@@ -47,4 +47,8 @@ class BeforeAppLaunch(tank.Hook):
 
 
         # this is the way SG says to do this
-        tank.util.append_path_to_env_var("NUKE_PATH", "S:/tools/nuke_dev")
+        if engine_name == "tk-nuke":
+            # os.environ.pop("NUKE_PATH")
+            # self.logger.debug("[CBFX] RESET NUKE PATH")
+            tank.util.append_path_to_env_var("NUKE_PATH", "S:/tools/nuke_dev/studio")
+            self.logger.debug("[CBFX] S:/tools/nuke_dev/studio added to NUKE_PATH")
