@@ -13,6 +13,8 @@
 
 ################################################################################
 
+ToolkitComponent: &ToolkitComponent CustomNonProjectEntity03
+
 # 3dsMax
 engines.tk-3dsmaxplus.location:
   type: app_store
@@ -50,13 +52,23 @@ engines.tk-maya.location:
   version: v0.9.3
 
 # Motion Builder
-# engines.tk-motionbuilder.location:
-#   type: app_store
-#   name: tk-motionbuilder
-#   version: v0.4.2
+engines.tk-motionbuilder.location:
+  type: app_store
+  name: tk-motionbuilder
+  version: v0.4.2
 
 # Nuke
 engines.tk-nuke.location:
+  ### Toolkit App Entity
+  # type: shotgun
+  # entity_type: *ToolkitComponent
+  # id: 1
+  # field: sg_uploaded_app
+  # version: 1681
+  ### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\engines\tk-nuke
+  ### App Store
   type: app_store
   name: tk-nuke
   version: v0.11.0

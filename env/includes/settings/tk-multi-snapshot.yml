@@ -122,13 +122,13 @@ settings.tk-multi-snapshot.aftereffects.shot_step:
 # ---- Motion Builder
 
 # asset step
-# settings.tk-multi-snapshot.motionbuilder.asset_step:
-#   template_snapshot: mobu_asset_snapshot
-#   template_work: mobu_asset_work
-#   location: "@apps.tk-multi-snapshot.location"
+settings.tk-multi-snapshot.motionbuilder.asset_step:
+  template_snapshot: mobu_asset_snapshot
+  template_work: mobu_asset_work
+  location: "@apps.tk-multi-snapshot.location"
 
 # shot step
-# settings.tk-multi-snapshot.motionbuilder.shot_step:
-#   template_snapshot: mobu_shot_snapshot
-#   template_work: mobu_shot_work
-#   location: "@apps.tk-multi-snapshot.location"
+settings.tk-multi-snapshot.motionbuilder.shot_step:
+  template_snapshot: mobu_shot_snapshot
+  template_work: mobu_shot_work
+  location: "@apps.tk-multi-snapshot.location"
