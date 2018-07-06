@@ -24,6 +24,10 @@ class EngineInit(Hook):
         At this point, all applications and frameworks have been loaded,
         and the engine is fully operational.
         """
-        if engine.instance_name == "tk-desktop":
-            os.environ.pop("NUKE_PATH")
-            self.logger.debug("[CBFX] RESET NUKE PATH")
+
+        pass
+        # if engine.instance_name == "tk-desktop":
+        #     os.environ.pop("NUKE_PATH")
+        #     self.logger.debug("[CBFX] RESET NUKE PATH")
+        # else:
+        #     pass
