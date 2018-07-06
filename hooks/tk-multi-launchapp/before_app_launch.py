@@ -47,8 +47,23 @@ class BeforeAppLaunch(tank.Hook):
 
 
         # this is the way SG says to do this
+
+        self.logger.debug("[CBFX] engine name: %s" % engine_name)
+
         if engine_name == "tk-nuke":
-            # os.environ.pop("NUKE_PATH")
-            # self.logger.debug("[CBFX] RESET NUKE PATH")
-            tank.util.append_path_to_env_var("NUKE_PATH", "S:/tools/nuke_dev/studio")
-            self.logger.debug("[CBFX] S:/tools/nuke_dev/studio added to NUKE_PATH")
+            env_vars={
+                # "NUKE_PATH": "R:/code/work/anthony.kramer/nuke/cbfx-nuke-tools",
+                "NUKE_PATH": "S:/tools/nuke/cbfx/current",
+            }
+            for k,v in env_vars.iteritems():
+                tank.util.append_path_to_env_var(k, v)
+                self.logger.debug("[CBFX] added environ %s=%s" % (k,v))
+
+        if engine_name == "tk-hiero":
+            env_vars={
+                "HIERO_PLUGIN_PATH": "R:/code/work/anthony.kramer/nuke/cbfx-hiero-tools",
+                # "HIERO_PLUGIN_PATH": "S:/tools/hiero/cbfx/current",
+            }
+            for k,v in env_vars.iteritems():
+                tank.util.append_path_to_env_var(k, v)
+                self.logger.debug("[CBFX] added environ %s=%s" % (k,v))
