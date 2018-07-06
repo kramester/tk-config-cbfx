@@ -72,25 +72,25 @@ settings.tk-multi-loader2.houdini:
   location: "@apps.tk-multi-loader2.location"
 
 # mari
-settings.tk-multi-loader2.mari:
-  action_mappings:
-    Alembic Cache: [geometry_import]
-  entities:
-  - caption: Assets
-    entity_type: Asset
-    filters:
-    - [project, is, '{context.project}']
-    hierarchy: [sg_asset_type, code]
-    publish_filters: []
-  - caption: My Tasks
-    entity_type: Task
-    filters:
-    - [task_assignees, is, '{context.user}']
-    - [project, is, '{context.project}']
-    hierarchy: [entity, content]
-    publish_filters: []
-  title_name: Import
-  location: '@apps.tk-multi-loader2.location'
+# settings.tk-multi-loader2.mari:
+#   action_mappings:
+#     Alembic Cache: [geometry_import]
+#   entities:
+#   - caption: Assets
+#     entity_type: Asset
+#     filters:
+#     - [project, is, '{context.project}']
+#     hierarchy: [sg_asset_type, code]
+#     publish_filters: []
+#   - caption: My Tasks
+#     entity_type: Task
+#     filters:
+#     - [task_assignees, is, '{context.user}']
+#     - [project, is, '{context.project}']
+#     hierarchy: [entity, content]
+#     publish_filters: []
+#   title_name: Import
+#   location: '@apps.tk-multi-loader2.location'
 
 # maya
 settings.tk-multi-loader2.maya:
@@ -258,4 +258,3 @@ settings.tk-multi-loader2.motionbuilder:
     - [project, is, '{context.project}']
     hierarchy: [entity, content]
   location: "@apps.tk-multi-loader2.location"
-

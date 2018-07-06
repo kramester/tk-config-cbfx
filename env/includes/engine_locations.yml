@@ -13,6 +13,8 @@
 
 ################################################################################
 
+ToolkitComponent: CustomNonProjectEntity03
+
 # 3dsMax
 engines.tk-3dsmaxplus.location:
   type: app_store
@@ -35,13 +37,13 @@ engines.tk-flame.location:
 engines.tk-houdini.location:
   type: app_store
   name: tk-houdini
-  version: v1.5.5
+  version: v1.5.6
 
 # Mari
-engines.tk-mari.location:
-  type: app_store
-  name: tk-mari
-  version: v1.2.0
+# engines.tk-mari.location:
+#   type: app_store
+#   name: tk-mari
+#   version: v1.2.0
 
 # Maya
 engines.tk-maya.location:
@@ -57,9 +59,19 @@ engines.tk-motionbuilder.location:
 
 # Nuke
 engines.tk-nuke.location:
+  ### Toolkit App Entity
+  # type: shotgun
+  # entity_type: *ToolkitComponent
+  # id: 1
+  # field: sg_uploaded_app
+  # version: 1681
+  ### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\engines\tk-nuke
+  ### App Store
   type: app_store
   name: tk-nuke
-  version: v0.11.0
+  version: v0.11.1
 
 # Photoshop
 engines.tk-photoshopcc.location:
@@ -78,5 +90,3 @@ engines.tk-shotgun.location:
   type: app_store
   name: tk-shotgun
   version: v0.8.2
-
-
