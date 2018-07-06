@@ -61,7 +61,7 @@ class BeforeAppLaunch(tank.Hook):
 
         if engine_name == "tk-hiero":
             env_vars={
-                "HIERO_PLUGIN_PATH": "R:/code/work/anthony.kramer/nuke/cbfx-hiero-tools",
+                # "HIERO_PLUGIN_PATH": "R:/code/work/anthony.kramer/hiero/cbfx-hiero-tools",
                 # "HIERO_PLUGIN_PATH": "S:/tools/hiero/cbfx/current",
             }
             for k,v in env_vars.iteritems():

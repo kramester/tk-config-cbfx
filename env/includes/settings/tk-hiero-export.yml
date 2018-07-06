@@ -16,10 +16,11 @@ includes:
 ################################################################################
 
 settings.tk-hiero-export:
-  custom_template_fields: [{keyword: Episode, description: The episode name}]
+  # custom_template_fields: [{keyword: Episode, description: The episode name}]
   default_task_filter: "[['step.Step.code', 'is', 'comp']]"
-  hook_resolve_custom_strings: '{config}/hiero_resolve_custom_strings.py'
-  hook_get_shot: '{config}/hiero_get_shot.py'
+  ## These are only needed if we want to add the Episode tag back in
+  # hook_resolve_custom_strings: '{config}/tk-hiero-export/hiero_resolve_custom_strings.py'
+  # hook_get_shot: '{config}/tk-hiero-export/hiero_get_shot.py'
   nuke_script_toolkit_write_nodes:
   - {channel: out, name: 'EXR'}
   - {channel: cc, name: 'TGA'}
