@@ -82,7 +82,7 @@ engines.tk-photoshopcc.location:
 # AfterEffects
 engines.tk-aftereffectscc.location:
   type: dev
-  path: S:\shotgun\engines\tk-aftereffectscc
+  path: R:\code\work\anthony.kramer\shotgun\engines\tk-aftereffectscc
 
 # Shell
 engines.tk-shell.location:
