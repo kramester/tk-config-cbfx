@@ -13,7 +13,7 @@
 
 ################################################################################
 
-ToolkitComponent: &ToolkitComponent CustomNonProjectEntity03
+ToolkitComponent: CustomNonProjectEntity03
 
 # 3dsMax
 engines.tk-3dsmaxplus.location:
@@ -37,7 +37,7 @@ engines.tk-flame.location:
 engines.tk-houdini.location:
   type: app_store
   name: tk-houdini
-  version: v1.5.5
+  version: v1.5.6
 
 # Mari
 # engines.tk-mari.location:
@@ -72,6 +72,7 @@ engines.tk-nuke.location:
   # type: app_store
   # name: tk-nuke
   # version: v0.11.0
+
 
 # Photoshop
 engines.tk-photoshopcc.location:
