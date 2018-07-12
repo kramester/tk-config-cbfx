@@ -13,7 +13,7 @@
 
 ################################################################################
 
-ToolkitComponent: CustomNonProjectEntity03
+ToolkitComponent: &ToolkitComponent CustomNonProjectEntity03
 
 # 3dsMax
 engines.tk-3dsmaxplus.location:
