@@ -53,7 +53,7 @@ class BeforeAppLaunch(tank.Hook):
         if engine_name == "tk-nuke":
             env_vars={
                 # "NUKE_PATH": "R:/code/work/anthony.kramer/nuke/cbfx-nuke-tools",
-                "NUKE_PATH": "S:/tools/nuke/cbfx/current",
+                "NUKE_PATH": "S:/tools_new/nuke/cbfx/current",
             }
             for k,v in env_vars.iteritems():
                 tank.util.append_path_to_env_var(k, v)
@@ -62,7 +62,7 @@ class BeforeAppLaunch(tank.Hook):
         if engine_name == "tk-hiero":
             env_vars={
                 # "HIERO_PLUGIN_PATH": "R:/code/work/anthony.kramer/hiero/cbfx-hiero-tools",
-                # "HIERO_PLUGIN_PATH": "S:/tools/hiero/cbfx/current",
+                "HIERO_PLUGIN_PATH": "S:/tools_new/hiero/cbfx/current",
             }
             for k,v in env_vars.iteritems():
                 tank.util.append_path_to_env_var(k, v)
