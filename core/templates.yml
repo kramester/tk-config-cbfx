@@ -230,6 +230,25 @@ paths:
 
 
     #
+    # AfterEffects
+    #
+
+    # The location of WIP files
+    aftereffects:
+        definition: '@shot_root/work/aftereffects/{name}.v{version}.aep'
+    shot_work_area_aftereffects:
+        definition: '@shot_root/work/aftereffects'
+    # The location of backups of WIP files
+    aftereffects_shot_snapshot:
+        definition: '@shot_root/work/aftereffects/snapshots/{name}.v{version}.{timestamp}.aep'
+    # The location of published files
+    shot_publish_area_aftereffects:
+        definition: '@shot_root/publish/aftereffects'
+    aftereffects_shot_publish:
+        definition: '@shot_root/publish/aftereffects/{name}.v{version}.aep'
+
+
+    #
     # Maya
     #
 
@@ -415,6 +434,25 @@ paths:
         definition: '@asset_root/publish/photoshop'
     photoshop_asset_publish:
         definition: '@asset_root/publish/photoshop/{name}.v{version}.psd'
+
+
+    #
+    # AfterEffects
+    #
+
+    # The location of WIP files
+    aftereffects_asset_work:
+        definition: '@asset_root/work/aftereffects/{name}.v{version}.psd'
+    asset_work_area_aftereffects:
+        definition: '@asset_root/work/aftereffects'
+    # The location of backups of WIP files
+    aftereffects_asset_snapshot:
+        definition: '@asset_root/work/aftereffects/snapshots/{name}.v{version}.{timestamp}.psd'
+    # The location of published files
+    asset_publish_area_aftereffects:
+        definition: '@asset_root/publish/aftereffects'
+    aftereffects_asset_publish:
+        definition: '@asset_root/publish/aftereffects/{name}.v{version}.psd'
 
 
     #

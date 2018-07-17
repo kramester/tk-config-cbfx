@@ -80,6 +80,18 @@ engines.tk-photoshopcc.location:
   name: tk-photoshopcc
   version: v1.6.0
 
+# AfterEffects
+engines.tk-aftereffectscc.location:
+  ### Toolkit App Entity
+  type: shotgun
+  entity_type: *ToolkitComponent
+  name: tk-aftereffectscc
+  field: sg_uploaded_app
+  version: 1834
+  #### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\engines\tk-aftereffectscc
+
 # Shell
 engines.tk-shell.location:
   type: app_store

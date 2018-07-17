@@ -42,6 +42,8 @@ apps.tk-multi-launchapp.location:
   type: app_store
   name: tk-multi-launchapp
   version: v0.10.0
+  # type: dev
+  # path: S:\shotgun\apps\tk-multi-launchapp
 
 # loader2
 apps.tk-multi-loader2.location:
