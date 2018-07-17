@@ -146,10 +146,22 @@ paths:
     asset_root: assets/{sg_asset_type}/{Asset}/{Step}
     sequence_root: shots/{Sequence}
 
-
     ##########################################################################################
     # Project level paths
     #
+
+    #
+    # LUTs
+    #
+
+    shot_lut:
+      definition: 'editorial/luts/{Shot}.cdl'
+
+    sequence_lut:
+      definition: 'editorial/luts/{Sequence}.cdl'
+
+    lut_area:
+      definition: 'editorial/luts'
 
     #
     # Hiero
@@ -184,19 +196,19 @@ paths:
     #
 
     flame_segment_clip:
-        definition: 'sequences/{Sequence}/{Shot}/finishing/clip/sources/{segment_name}.clip'
+        definition: 'shots/{Sequence}/{Shot}/finishing/clip/sources/{segment_name}.clip'
     flame_shot_clip:
-        definition: 'sequences/{Sequence}/{Shot}/finishing/clip/{Shot}.clip'
+        definition: 'shots/{Sequence}/{Shot}/finishing/clip/{Shot}.clip'
     flame_shot_batch:
-        definition: 'sequences/{Sequence}/{Shot}/finishing/batch/{Shot}.v{version}.batch'
+        definition: 'shots/{Sequence}/{Shot}/finishing/batch/{Shot}.v{version}.batch'
     flame_shot_render_dpx:
-        definition: 'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
+        definition: 'shots/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
     flame_shot_render_exr:
-        definition: 'sequences/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
+        definition: 'shots/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
     flame_shot_comp_dpx:
-        definition: 'sequences/{Sequence}/{Shot}/finishing/comp/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
+        definition: 'shots/{Sequence}/{Shot}/finishing/comp/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
     flame_shot_comp_exr:
-        definition: 'sequences/{Sequence}/{Shot}/finishing/comp/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
+        definition: 'shots/{Sequence}/{Shot}/finishing/comp/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
 
     #
     # Photoshop

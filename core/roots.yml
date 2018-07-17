@@ -68,12 +68,9 @@
 #     shotgun_storage_id: 2
 #
 
-# pipeline:
-#     mac_path:
-#     linux_path: /mnt/pipe/tools
-#     windows_path: S:\tools
-#     description: pipeline code
-#     shotgun_storage_id: 69
+nuke_tools:
+    description: nuke tools repository
+    shotgun_storage_id: 69
 
 primary:
     description: High speed storage for most projects
