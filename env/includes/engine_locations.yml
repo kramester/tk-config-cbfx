@@ -25,13 +25,13 @@ engines.tk-3dsmaxplus.location:
 engines.tk-desktop.location:
   type: app_store
   name: tk-desktop
-  version: v2.4.11
+  version: v2.4.12
 
 # Flame
 engines.tk-flame.location:
   type: app_store
   name: tk-flame
-  version: v1.13.2
+  version: v1.13.4
 
 # Houdini
 engines.tk-houdini.location:
@@ -78,7 +78,19 @@ engines.tk-nuke.location:
 engines.tk-photoshopcc.location:
   type: app_store
   name: tk-photoshopcc
-  version: v1.6.0
+  version: v1.6.2
+
+# AfterEffects
+engines.tk-aftereffectscc.location:
+  ### Toolkit App Entity
+  type: shotgun
+  entity_type: *ToolkitComponent
+  name: tk-aftereffectscc
+  field: sg_uploaded_app
+  version: 1834
+  #### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\engines\tk-aftereffectscc
 
 # Shell
 engines.tk-shell.location:
