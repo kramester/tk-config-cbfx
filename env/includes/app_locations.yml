@@ -17,6 +17,8 @@ includes:
 ################################################################################
 # location descriptors for apps used in this configuration
 
+ToolkitComponent: &ToolkitComponent CustomNonProjectEntity03
+
 # ---- Multi apps
 
 # about
@@ -129,9 +131,19 @@ apps.tk-shotgun-launchpublish.location:
 
 # hiero export
 apps.tk-hiero-export.location:
-  type: app_store
+  ### Toolkit App Entity
+  type: shotgun
+  entity_type: *ToolkitComponent
   name: tk-hiero-export
-  version: v0.5.1
+  field: sg_uploaded_app
+  version: 1935
+  ### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-hiero-export
+  ### App Store
+  # type: app_store
+  # name: tk-hiero-export
+  # version: v0.5.1
 
 # hiero openinshotgun
 apps.tk-hiero-openinshotgun.location:

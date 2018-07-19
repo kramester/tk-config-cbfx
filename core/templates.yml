@@ -154,14 +154,14 @@ paths:
     # LUTs
     #
 
-    shot_lut:
-      definition: 'editorial/luts/{Shot}.cdl'
-
-    sequence_lut:
-      definition: 'editorial/luts/{Sequence}.cdl'
-
     lut_area:
       definition: 'editorial/luts'
+
+    shot_lut_folder:
+      definition: '@lut_area/{Sequence}/{Shot}'
+
+    sequence_lut_folder:
+      definition: '@lut_area/{Sequence}'
 
     #
     # Hiero
@@ -372,11 +372,11 @@ paths:
     nuke_shot_render_mono_exr:
         definition: '@shot_root/work/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
     nuke_shot_render_pub_mono_exr:
-        definition: '@shot_root/publish/elements/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/publish/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
     nuke_shot_render_mono_tga:
         definition: '@shot_root/work/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.tga'
     nuke_shot_render_pub_mono_tga:
-        definition: '@shot_root/publish/elements/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.tga'
+        definition: '@shot_root/publish/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.tga'
     # nuke_shot_render_mono_dpx:
         # definition: '@shot_root/work/images/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.dpx'
     # nuke_shot_render_pub_mono_dpx:
