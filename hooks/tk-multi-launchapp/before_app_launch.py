@@ -50,9 +50,9 @@ class BeforeAppLaunch(tank.Hook):
         # this is the way SG says to do this
 
         self.logger.debug("[CBFX] engine name: %s" % engine_name)
-        self.logger.debug("[CBFX] nuke tools: %s" % self.sgtk.roots["nuke_tools"])
 
         if engine_name == "tk-nuke":
+            self.logger.debug("[CBFX] nuke tools: %s" % self.sgtk.roots["nuke_tools"])
             env_vars={
                 # "NUKE_PATH": "R:/code/work/anthony.kramer/nuke/cbfx-nuke-tools",
                 "NUKE_PATH": "S:/tools/nuke/cbfx/current;%s" % self.sgtk.roots['nuke_tools'],
