@@ -37,7 +37,7 @@ settings.tk-nuke-writenode.shot:
   write_nodes:
   - file_type: exr
     name: EXR
-    promote_write_knobs: [compression, datatype]
+    promote_write_knobs: [compression, datatype, dw_compression_level]
     proxy_publish_template:
     proxy_render_template:
     publish_template: nuke_shot_render_pub_mono_exr

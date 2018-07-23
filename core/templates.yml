@@ -160,6 +160,9 @@ paths:
     shot_lut_folder:
       definition: '@lut_area/{Sequence}/{Shot}'
 
+    shot_lut:
+      definition: '@shot_lut_folder/{Shot}.cc'
+
     sequence_lut_folder:
       definition: '@lut_area/{Sequence}'
 
