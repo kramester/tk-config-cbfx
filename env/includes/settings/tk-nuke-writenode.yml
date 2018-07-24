@@ -38,7 +38,7 @@ settings.tk-nuke-writenode.shot:
   template_script_work: nuke_shot_work
   write_nodes:
   - file_type: exr
-    name: EXR / Zip 1 scanline / 16-bit
+    name: EXR
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
