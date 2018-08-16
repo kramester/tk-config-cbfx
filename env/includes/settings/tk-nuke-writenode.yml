@@ -38,7 +38,7 @@ settings.tk-nuke-writenode.shot:
   template_script_work: nuke_shot_work
   write_nodes:
   - file_type: exr
-    name: EXR / Zip 1 scanline / 16-bit
+    name: EXR / 16-bit / Zip 1 scanline
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
@@ -50,7 +50,19 @@ settings.tk-nuke-writenode.shot:
     tank_type: Rendered Image
     tile_color: []
   - file_type: exr
-    name: EXR / RLE / 16-bit
+    name: EXR / 32-bit / Zip 1 scanline
+    promote_write_knobs: []
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_shot_render_pub_mono_exr
+    render_template: nuke_shot_render_mono_exr
+    settings:
+      compression: Zip (1 scanline)
+      datatype: 32 bit float
+    tank_type: Rendered Image
+    tile_color: []
+  - file_type: exr
+    name: EXR / 16-bit / RLE
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
@@ -62,27 +74,29 @@ settings.tk-nuke-writenode.shot:
     tank_type: Rendered Image
     tile_color: []
   - file_type: exr
-    name: EXR / DWAB 45 / 16-bit
+    name: EXR / 16-bit / DWAB 45
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
     publish_template: nuke_shot_render_pub_mono_exr
     render_template: nuke_shot_render_mono_exr
     settings:
-      compression: DWAB
       datatype: 16 bit half
+      compression: DWAB
+      dw_compression_level: 45
     tank_type: Rendered Image
     tile_color: []
   - file_type: exr
-    name: EXR / DWAA 45 / 16-bit
+    name: EXR / 16-bit / DWAA 45
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
     publish_template: nuke_shot_render_pub_mono_exr
     render_template: nuke_shot_render_mono_exr
     settings:
-      compression: DWAA
       datatype: 16 bit half
+      compression: DWAA
+      dw_compression_level: 45
     tank_type: Rendered Image
     tile_color: []
   - file_type: targa

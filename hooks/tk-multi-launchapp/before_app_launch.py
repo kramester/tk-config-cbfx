@@ -54,8 +54,8 @@ class BeforeAppLaunch(tank.Hook):
         if engine_name == "tk-nuke":
             self.logger.debug("[CBFX] nuke tools: %s" % self.sgtk.roots["nuke_tools"])
             env_vars={
-                "NUKE_PATH": "\\\\CBFX-FS-01\\Repository\\code\\work\\anthony.kramer\\nuke\\cbfx-nuke-tools;%s" % self.sgtk.roots['nuke_tools'],
-                # "NUKE_PATH": "\\\\CBFX-FS-01\\Pipeline\\tools\\nuke\\cbfx\\current;%s" % self.sgtk.roots['nuke_tools'],
+                # "NUKE_PATH": "\\\\CBFX-FS-01\\Repository\\code\\work\\anthony.kramer\\nuke\\cbfx-nuke-tools;%s" % self.sgtk.roots['nuke_tools'],
+                "NUKE_PATH": "S:\\tools\\nuke\\cbfx\\current;%s" % self.sgtk.roots['nuke_tools'],
             }
             for k,v in env_vars.iteritems():
                 tank.util.append_path_to_env_var(k, v)
@@ -64,8 +64,20 @@ class BeforeAppLaunch(tank.Hook):
         if engine_name == "tk-hiero":
             env_vars={
                 # "HIERO_PLUGIN_PATH": "R:/code/work/anthony.kramer/hiero/cbfx-hiero-tools",
-                "HIERO_PLUGIN_PATH": "\\\\CBFX-FS-01\\Pipeline\\tools\\hiero\\cbfx\\current",
+                "HIERO_PLUGIN_PATH": "S:\\tools\\hiero\\cbfx\\current",
             }
             for k,v in env_vars.iteritems():
                 tank.util.append_path_to_env_var(k, v)
                 self.logger.debug("[CBFX] added environ %s=%s" % (k,v))
+
+        # Sets the current task to in progress
+        if self.parent.context.task:
+            task_id = self.parent.context.task['id']
+            task = self.parent.sgtk.shotgun.find_one("Task", filters=[["id", "is", task_id]], fields=["sg_status_list"])
+            self.logger.debug("[CBFX] task %s status is %s" % (task_id, task['sg_status_list']))
+            if task['sg_status_list'] == 'rdy':
+                data = {
+                    'sg_status_list':'ip'
+                }
+                self.parent.shotgun.update("Task", task_id, data)
+                self.logger.debug("[CBFX] changed task status to 'ip'")
