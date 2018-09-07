@@ -176,10 +176,10 @@ paths:
     hiero_project_snapshot:
         definition: 'editorial/work/snapshots/{name}_v{version}_{timestamp}.hrox'
     # The location of published hiero files
-    hiero_project_publish:
-        definition: 'editorial/publish/{name}_v{version}.hrox'
-    hiero_project_publish_area:
-        definition: 'editorial/publish'
+    # hiero_project_publish:
+    #     definition: 'editorial/publish/{name}_v{version}.hrox'
+    # hiero_project_publish_area:
+    #     definition: 'editorial/publish'
 
 
     ##########################################################################################
@@ -195,20 +195,20 @@ paths:
     # Flame
     #
 
-    flame_segment_clip:
-        definition: 'shots/{Sequence}/{Shot}/finishing/clip/sources/{segment_name}.clip'
-    flame_shot_clip:
-        definition: 'shots/{Sequence}/{Shot}/finishing/clip/{Shot}.clip'
-    flame_shot_batch:
-        definition: 'shots/{Sequence}/{Shot}/finishing/batch/{Shot}.v{version}.batch'
-    flame_shot_render_dpx:
-        definition: 'shots/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
-    flame_shot_render_exr:
-        definition: 'shots/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
-    flame_shot_comp_dpx:
-        definition: 'shots/{Sequence}/{Shot}/finishing/comp/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
-    flame_shot_comp_exr:
-        definition: 'shots/{Sequence}/{Shot}/finishing/comp/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
+    # flame_segment_clip:
+    #     definition: 'shots/{Sequence}/{Shot}/finishing/clip/sources/{segment_name}.clip'
+    # flame_shot_clip:
+    #     definition: 'shots/{Sequence}/{Shot}/finishing/clip/{Shot}.clip'
+    # flame_shot_batch:
+    #     definition: 'shots/{Sequence}/{Shot}/finishing/batch/{Shot}.v{version}.batch'
+    # flame_shot_render_dpx:
+    #     definition: 'shots/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
+    # flame_shot_render_exr:
+    #     definition: 'shots/{Sequence}/{Shot}/finishing/renders/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
+    # flame_shot_comp_dpx:
+    #     definition: 'shots/{Sequence}/{Shot}/finishing/comp/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.dpx'
+    # flame_shot_comp_exr:
+    #     definition: 'shots/{Sequence}/{Shot}/finishing/comp/{segment_name}_v{version}/{Shot}_{segment_name}_v{version}.{SEQ}.exr'
 
     #
     # Photoshop
@@ -358,7 +358,7 @@ paths:
         definition: '@shot_root/work/nuke'
     # define the location of a publish area
     shot_publish_area_nuke:
-        definition: '@shot_root/publish/nuke'
+        definition: '@shot_work_area_nuke'
     # The location of WIP script files
     nuke_shot_work:
         definition: '@shot_root/work/nuke/{name}.v{version}.nk'
@@ -367,16 +367,16 @@ paths:
         definition: '@shot_root/work/nuke/snapshots/{name}.v{version}.{timestamp}.nk'
     # The location of published nuke script files
     nuke_shot_publish:
-        definition: '@shot_root/publish/nuke/{name}.v{version}.nk'
+        definition: '@shot_root/work/nuke/{name}.v{version}.nk'
     # write node outputs
     nuke_shot_render_mono_exr:
-        definition: '@shot_root/work/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
     nuke_shot_render_pub_mono_exr:
-        definition: '@shot_root/publish/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
+        definition: '@nuke_shot_render_mono_exr'
     nuke_shot_render_mono_tga:
-        definition: '@shot_root/work/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.tga'
+        definition: '@shot_root/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.tga'
     nuke_shot_render_pub_mono_tga:
-        definition: '@shot_root/publish/images/{Shot}_{Step}_{nuke.output}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.tga'
+        definition: '@nuke_shot_render_mono_tga'
     # nuke_shot_render_mono_dpx:
         # definition: '@shot_root/work/images/{name}/v{version}/{width}x{height}/{Shot}_{name}_{nuke.output}_v{version}.{SEQ}.dpx'
     # nuke_shot_render_pub_mono_dpx:
@@ -397,9 +397,14 @@ paths:
 
     # export of shot asset data from hiero
     hiero_plate_path:
-        definition: '@sequence_root/{Shot}/editorial/publish/elements/{Shot}_{track}/{Shot}_{track}.{SEQ}.exr'
+        definition: '@sequence_root/{Shot}/editorial/images/{Shot}_{track}/{Shot}_{track}.{SEQ}.exr'
+    hiero_plate_qt_path:
+        definition: '@sequence_root/{Shot}/editorial/review/{Shot}_{track}/{Shot}_{track}.mov'
+    hiero_audio_path:
+        definition: '@sequence_root/{Shot}/editorial/data/{Shot}_comp_out_v{tk_version}.wav'
     hiero_render_path:
-        definition: '@shot_root/publish/elements/comp/v{tk_version}/{Shot}_comp_out/{Shot}_comp_out_v{tk_version}.{SEQ}.exr'
+        definition: '@sequence_root/{Shot}/editorial/images/{Shot}_comp_out_v{tk_version}/{Shot}_comp_out_v{tk_version}.{SEQ}.exr'
+
     # hiero_plate_path:
         # definition: 'sequences/{Sequence}/{Shot}/editorial/{YYYY}_{MM}_{DD}/plates/{project}_{Shot}.mov'
     # hiero_render_path:
