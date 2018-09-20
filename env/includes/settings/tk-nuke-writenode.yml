@@ -20,15 +20,68 @@ settings.tk-nuke-writenode.asset:
   template_script_work: nuke_asset_work
   write_nodes:
   - file_type: exr
-    name: Exr
+    name: main output
+    promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_asset_render_pub
-    render_template: nuke_asset_render
-    settings: {}
+    publish_template: nuke_asset_main
+    render_template: nuke_asset_main
+    settings:
+      autocrop: False
+      channels: rgb
+      compression: DWAB
+      dw_compression_level: 20
+      datatype: 16 bit half
+      metadata: all metadata
     tank_type: Rendered Image
     tile_color: []
+  - file_type: exr
+    name: precomp
+    promote_write_knobs: [autocrop, datatype, compression]
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_asset_precomp
+    render_template: nuke_asset_precomp
+    settings:
+      autocrop: True
+      channels: all
+      compression: Zip (1 scanline)
+      datatype: 16 bit half
+      metadata: all metadata
+    tank_type: Rendered Image
+    tile_color: []
+    output_default: main
+  - file_type: exr
+    name: matte
+    promote_write_knobs: [autocrop]
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_asset_matte
+    render_template: nuke_asset_matte
+    settings:
+      autocrop: True
+      channels: rgb
+      compression: RLE
+      datatype: 16 bit half
+      metadata: all metadata
+    tank_type: Rendered Image
+    tile_color: []
+  - file_type: exr
+    name: review
     promote_write_knobs: []
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_asset_review
+    render_template: nuke_asset_review
+    settings:
+      autocrop: False
+      channels: rgb
+      compression: DWAB
+      dw_compression_level: 150
+      datatype: 16 bit half
+      metadata: all metadata
+    tank_type: Rendered Image
+    tile_color: []
   location: "@apps.tk-nuke-writenode.location"
 
 # shot
@@ -38,108 +91,66 @@ settings.tk-nuke-writenode.shot:
   template_script_work: nuke_shot_work
   write_nodes:
   - file_type: exr
-    name: EXR / 16-bit / Zip 1 scanline
+    name: main output
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_shot_render_pub_mono_exr
-    render_template: nuke_shot_render_mono_exr
+    publish_template: nuke_shot_main
+    render_template: nuke_shot_main
     settings:
+      autocrop: False
+      channels: rgb
+      compression: DWAB
+      dw_compression_level: 20
+      datatype: 16 bit half
+      metadata: all metadata
+    tank_type: Rendered Image
+    tile_color: []
+  - file_type: exr
+    name: precomp
+    promote_write_knobs: [autocrop, datatype, compression]
+    proxy_publish_template:
+    proxy_render_template:
+    publish_template: nuke_shot_precomp
+    render_template: nuke_shot_precomp
+    settings:
+      autocrop: True
+      channels: all
       compression: Zip (1 scanline)
       datatype: 16 bit half
+      metadata: all metadata
     tank_type: Rendered Image
     tile_color: []
+    output_default: main
   - file_type: exr
-    name: EXR / 32-bit / Zip 1 scanline
-    promote_write_knobs: []
+    name: matte
+    promote_write_knobs: [autocrop]
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_shot_render_pub_mono_exr
-    render_template: nuke_shot_render_mono_exr
+    publish_template: nuke_shot_matte
+    render_template: nuke_shot_matte
     settings:
-      compression: Zip (1 scanline)
-      datatype: 32 bit float
-    tank_type: Rendered Image
-    tile_color: []
-  - file_type: exr
-    name: EXR / 16-bit / RLE
-    promote_write_knobs: []
-    proxy_publish_template:
-    proxy_render_template:
-    publish_template: nuke_shot_render_pub_mono_exr
-    render_template: nuke_shot_render_mono_exr
-    settings:
+      autocrop: True
+      channels: rgb
       compression: RLE
       datatype: 16 bit half
+      metadata: all metadata
     tank_type: Rendered Image
     tile_color: []
   - file_type: exr
-    name: EXR / 16-bit / DWAB 45
+    name: review
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_shot_render_pub_mono_exr
-    render_template: nuke_shot_render_mono_exr
+    publish_template: nuke_shot_review
+    render_template: nuke_shot_review
     settings:
-      datatype: 16 bit half
+      autocrop: False
+      channels: rgb
       compression: DWAB
-      dw_compression_level: 45
-    tank_type: Rendered Image
-    tile_color: []
-  - file_type: exr
-    name: EXR / 16-bit / DWAA 45
-    promote_write_knobs: []
-    proxy_publish_template:
-    proxy_render_template:
-    publish_template: nuke_shot_render_pub_mono_exr
-    render_template: nuke_shot_render_mono_exr
-    settings:
+      dw_compression_level: 150
       datatype: 16 bit half
-      compression: DWAA
-      dw_compression_level: 45
+      metadata: all metadata
     tank_type: Rendered Image
     tile_color: []
-  - file_type: targa
-    name: TGA / RLE
-    promote_write_knobs: [compression]
-    proxy_publish_template:
-    proxy_render_template:
-    publish_template: nuke_shot_render_pub_mono_tga
-    render_template: nuke_shot_render_mono_tga
-    settings:
-      colorspace: rec709
-    tank_type: Rendered Image
-    tile_color: []
-  # - file_type: exr
-    # name: Stereo Exr, 32 bit
-    # proxy_publish_template:
-    # proxy_render_template:
-    # publish_template: nuke_shot_render_pub_stereo
-    # render_template: nuke_shot_render_stereo
-    # settings:
-      # datatype: 32 bit float
-    # tank_type: Rendered Image
-    # tile_color: []
-    # promote_write_knobs: []
-  # - file_type: exr
-    # name: Stereo Exr, 16 bit
-    # promote_write_knobs: []
-    # proxy_publish_template:
-    # proxy_render_template:
-    # publish_template: nuke_shot_render_pub_stereo
-    # render_template: nuke_shot_render_stereo
-    # settings:
-      # datatype: 16 bit half
-    # tank_type: Rendered Image
-    # tile_color: []
-  # - file_type: dpx
-    # name: Mono Dpx
-    # promote_write_knobs: []
-    # proxy_publish_template:
-    # proxy_render_template:
-    # publish_template: nuke_shot_render_pub_mono_dpx
-    # render_template: nuke_shot_render_mono_dpx
-    # settings: {}
-    # tank_type: Rendered Image
-    # tile_color: []
   location: "@apps.tk-nuke-writenode.location"
