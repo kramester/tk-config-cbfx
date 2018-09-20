@@ -18,6 +18,8 @@ to set environment variables or run scripts as part of the app initialization.
 import os
 import tank
 
+log_folder = os.getenv('LOCALAPPDATA')
+
 class BeforeAppLaunch(tank.Hook):
     """
     Hook to set up the system prior to app launch.
@@ -54,6 +56,8 @@ class BeforeAppLaunch(tank.Hook):
         if engine_name == "tk-nuke":
             self.logger.debug("[CBFX] nuke tools: %s" % self.sgtk.roots["nuke_tools"])
             env_vars={
+                "FOUNDRY_LOG_FILE": os.path.join(log_folder,'Temp/nuke/nuke.log'),
+                "FOUNDRY_LOG_LEVEL": "error",
                 "NUKE_PATH": "\\\\CBFX-FS-01\\Repository\\code\\work\\anthony.kramer\\nuke\\cbfx-nuke-tools;%s" % self.sgtk.roots['nuke_tools'],
                 # "NUKE_PATH": "\\\\CBFX-FS-01\\Pipeline\\tools\\nuke\\cbfx\\current;%s" % self.sgtk.roots['nuke_tools'],
             }
