@@ -22,11 +22,10 @@ settings.tk-hiero-export:
   # hook_resolve_custom_strings: '{config}/tk-hiero-export/hiero_resolve_custom_strings.py'
   # hook_get_shot: '{config}/tk-hiero-export/hiero_get_shot.py'
   nuke_script_toolkit_write_nodes:
-  - {channel: out, name: 'EXR'}
-  - {channel: cc, name: 'TGA'}
+  - {channel: '', name: 'main output'}
   template_nuke_script_path: nuke_shot_work
   template_plate_path: hiero_plate_path
   # template_render_path: nuke_shot_render_mono_exr
-  template_render_path: hiero_render_path
+  template_render_path: nuke_shot_main
   template_version: hiero_version
   location: "@apps.tk-hiero-export.location"
