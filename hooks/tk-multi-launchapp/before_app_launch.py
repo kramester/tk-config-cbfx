@@ -20,11 +20,11 @@ import tank
 
 log_folder = os.getenv('LOCALAPPDATA')
 
+
 class BeforeAppLaunch(tank.Hook):
     """
     Hook to set up the system prior to app launch.
     """
-
 
     def execute(self, app_path, app_args, version, engine_name, **kwargs):
         """
@@ -48,28 +48,27 @@ class BeforeAppLaunch(tank.Hook):
         # you can set environment variables like this:
         # os.environ["MY_SETTING"] = "foo bar"
 
-
         # this is the way SG says to do this
 
         self.logger.debug("[CBFX] engine name: %s" % engine_name)
 
         if engine_name == "tk-nuke":
             self.logger.debug("[CBFX] nuke tools: %s" % self.sgtk.roots["nuke_tools"])
-            env_vars={
-                "FOUNDRY_LOG_FILE": os.path.join(log_folder,'Temp/nuke/nuke.log'),
-                "FOUNDRY_LOG_LEVEL": "error",
+            env_vars = {
+                # "FOUNDRY_LOG_FILE": os.path.join(log_folder, 'Temp/nuke/foundry.log'),
+                # "FOUNDRY_LOG_LEVEL": "verbose",
                 "NUKE_PATH": "\\\\CBFX-FS-01\\Repository\\code\\work\\anthony.kramer\\nuke\\cbfx-nuke-tools;%s" % self.sgtk.roots['nuke_tools'],
                 # "NUKE_PATH": "\\\\CBFX-FS-01\\Pipeline\\tools\\nuke\\cbfx\\current;%s" % self.sgtk.roots['nuke_tools'],
             }
-            for k,v in env_vars.iteritems():
+            for k, v in env_vars.iteritems():
                 tank.util.append_path_to_env_var(k, v)
-                self.logger.debug("[CBFX] added environ %s=%s" % (k,v))
+                self.logger.debug("[CBFX] added environ %s=%s" % (k, v))
 
         if engine_name == "tk-hiero":
-            env_vars={
+            env_vars = {
                 # "HIERO_PLUGIN_PATH": "R:/code/work/anthony.kramer/hiero/cbfx-hiero-tools",
                 "HIERO_PLUGIN_PATH": "\\\\CBFX-FS-01\\Pipeline\\tools\\hiero\\cbfx\\current",
             }
-            for k,v in env_vars.iteritems():
+            for k, v in env_vars.iteritems():
                 tank.util.append_path_to_env_var(k, v)
-                self.logger.debug("[CBFX] added environ %s=%s" % (k,v))
+                self.logger.debug("[CBFX] added environ %s=%s" % (k, v))
