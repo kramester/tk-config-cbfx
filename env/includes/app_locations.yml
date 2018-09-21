@@ -119,7 +119,7 @@ apps.tk-shotgun-folders.location:
   version: 2011
   ### Dev
   # type: dev
-  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-hiero-export
+  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-shotgun-folders
   ### App Store
   # type: app_store
   # name: tk-shotgun-folders
