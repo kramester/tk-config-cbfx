@@ -43,7 +43,7 @@ apps.tk-multi-demo.location:
 apps.tk-multi-launchapp.location:
   type: app_store
   name: tk-multi-launchapp
-  version: v0.10.0
+  version: v0.10.1
   # type: dev
   # path: S:\shotgun\apps\tk-multi-launchapp
 
@@ -51,13 +51,13 @@ apps.tk-multi-launchapp.location:
 apps.tk-multi-loader2.location:
   type: app_store
   name: tk-multi-loader2
-  version: v1.19.1
+  version: v1.19.2
 
 # publish2
 apps.tk-multi-publish2.location:
   type: app_store
   name: tk-multi-publish2
-  version: v2.1.6
+  version: v2.1.7
 
 # pythonconsole
 apps.tk-multi-pythonconsole.location:
@@ -87,7 +87,7 @@ apps.tk-multi-setframerange.location:
 apps.tk-multi-shotgunpanel.location:
   type: app_store
   name: tk-multi-shotgunpanel
-  version: v1.6.1
+  version: v1.6.3
 
 # snapshot
 apps.tk-multi-snapshot.location:
@@ -105,7 +105,7 @@ apps.tk-multi-workfiles.location:
 apps.tk-multi-workfiles2.location:
   type: app_store
   name: tk-multi-workfiles2
-  version: v0.11.6
+  version: v0.11.8
 
 # ---- Shotgun apps
 
@@ -119,7 +119,7 @@ apps.tk-shotgun-folders.location:
   version: 2011
   ### Dev
   # type: dev
-  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-hiero-export
+  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-shotgun-folders
   ### App Store
   # type: app_store
   # name: tk-shotgun-folders
@@ -167,13 +167,13 @@ apps.tk-hiero-openinshotgun.location:
 apps.tk-houdini-alembicnode.location:
   type: app_store
   name: tk-houdini-alembicnode
-  version: v0.3.0
+  version: v0.3.1
 
 # houdini mantranode
 apps.tk-houdini-mantranode.location:
   type: app_store
   name: tk-houdini-mantranode
-  version: v0.3.0
+  version: v0.3.1
 
 # ---- Nuke apps
 
@@ -187,7 +187,7 @@ apps.tk-nuke-quickreview.location:
 apps.tk-nuke-writenode.location:
   name: tk-nuke-writenode
   type: app_store
-  version: v1.3.2
+  version: v1.4.1
 
 # ---- Flame apps
 
@@ -195,13 +195,13 @@ apps.tk-nuke-writenode.location:
 apps.tk-flame-export.location:
   name: tk-flame-export
   type: app_store
-  version: v1.8.4
+  version: v1.9.1
 
 # flame review
 apps.tk-flame-review.location:
   name: tk-flame-review
   type: app_store
-  version: v1.2.2
+  version: v1.3.0
 
 # ---- Mari apps
 
