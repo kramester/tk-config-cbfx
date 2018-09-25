@@ -21,6 +21,11 @@ ToolkitComponent: &ToolkitComponent CustomNonProjectEntity03
 
 # ---- Multi apps
 
+# launchapp
+# apps.tk-multi-render.location:
+#   type: dev
+#   path: R:\code\work\anthony.kramer\shotgun\apps\tk-multi-render
+
 # about
 apps.tk-multi-about.location:
   type: app_store

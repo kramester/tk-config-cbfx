@@ -30,6 +30,8 @@ settings.tk-desktop.site:
 settings.tk-desktop.project:
   show_recents: false
   apps:
+    # tk-multi-demo:
+    #   location: "@apps.tk-multi-demo.location"
     tk-multi-pythonconsole:
       location: "@apps.tk-multi-pythonconsole.location"
     tk-multi-launchapp: "@settings.tk-multi-launchapp"
