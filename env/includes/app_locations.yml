@@ -21,7 +21,7 @@ ToolkitComponent: &ToolkitComponent CustomNonProjectEntity03
 
 # ---- Multi apps
 
-# launchapp
+# render app
 # apps.tk-multi-render.location:
 #   type: dev
 #   path: R:\code\work\anthony.kramer\shotgun\apps\tk-multi-render
@@ -49,8 +49,6 @@ apps.tk-multi-launchapp.location:
   type: app_store
   name: tk-multi-launchapp
   version: v0.10.1
-  # type: dev
-  # path: S:\shotgun\apps\tk-multi-launchapp
 
 # loader2
 apps.tk-multi-loader2.location:
@@ -84,9 +82,20 @@ apps.tk-multi-screeningroom.location:
 
 # setframerange
 apps.tk-multi-setframerange.location:
-  type: app_store
+  ### Toolkit App Entity
+  type: shotgun
+  entity_type: *ToolkitComponent
   name: tk-multi-setframerange
-  version: v0.3.0
+  field: sg_uploaded_app
+  version: 10339
+  ### App Store
+  # type: app_store
+  # name: tk-multi-setframerange
+  # version: v0.3.0
+  ### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-multi-setframerange
+
 
 # shotgun panel
 apps.tk-multi-shotgunpanel.location:
