@@ -53,7 +53,7 @@ class BeforeAppLaunch(tank.Hook):
         if engine_name == "tk-nuke":
             self.logger.debug("[CBFX] nuke tools: %s" % self.sgtk.roots["nuke_tools"])
             env_vars = {
-                "NUKE_PATH": "\\\\CBFX-FS-01\\Repository\\code\\work\\anthony.kramer\\nuke\\cbfx-nuke-tools;%s" % self.sgtk.roots['nuke_tools'],
+                "NUKE_PATH": "R:\\code\\work\\anthony.kramer\\nuke\\cbfx-nuke-tools;%s" % self.sgtk.roots['nuke_tools'],
                 # "NUKE_PATH": "S:\\tools\\nuke\\cbfx\\current;%s" % self.sgtk.roots['nuke_tools'],
             }
             for k, v in env_vars.iteritems():
@@ -62,7 +62,7 @@ class BeforeAppLaunch(tank.Hook):
 
         if engine_name == "tk-hiero":
             env_vars = {
-                # "HIERO_PLUGIN_PATH": "R:/code/work/anthony.kramer/hiero/cbfx-hiero-tools",
+                # "HIERO_PLUGIN_PATH": "R:\\code\\work\\anthony.kramer\\hiero\\cbfx-hiero-tools",
                 "HIERO_PLUGIN_PATH": "S:\\tools\\hiero\\cbfx\\current",
             }
             for k, v in env_vars.iteritems():
