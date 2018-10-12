@@ -341,6 +341,7 @@ settings.tk-nuke.nukestudio.shot_step:
 
 # project
 settings.tk-nuke.render.project:
+  apps:
   location: "@engines.tk-nuke.location"
 
 # asset_step
