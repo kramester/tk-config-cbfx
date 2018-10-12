@@ -53,8 +53,8 @@ class BeforeAppLaunch(tank.Hook):
         if engine_name == "tk-nuke":
             self.logger.debug("[CBFX] nuke tools: %s" % self.sgtk.roots["nuke_tools"])
             env_vars = {
-                # "NUKE_PATH": "R:\\code\\work\\anthony.kramer\\nuke\\cbfx-nuke-tools;%s" % self.sgtk.roots['nuke_tools'],
-                "NUKE_PATH": "S:\\tools\\nuke\\cbfx\\current;%s" % self.sgtk.roots['nuke_tools'],
+                "NUKE_PATH": "R:\\code\\work\\anthony.kramer\\nuke\\cbfx-nuke-tools;%s" % self.sgtk.roots['nuke_tools'],
+                # "NUKE_PATH": "S:\\tools\\nuke\\cbfx\\current;%s" % self.sgtk.roots['nuke_tools'],
             }
             for k, v in env_vars.iteritems():
                 tank.util.append_path_to_env_var(k, v)
