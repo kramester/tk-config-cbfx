@@ -21,7 +21,6 @@ includes:
 - ./includes/settings/tk-maya.yml
 - ./includes/settings/tk-motionbuilder.yml
 - ./includes/settings/tk-nuke.yml
-- ./includes/settings/tk-nuke-render.yml
 - ./includes/settings/tk-photoshopcc.yml
 - ./includes/settings/tk-aftereffectscc.yml
 - ./includes/settings/tk-shell.yml
