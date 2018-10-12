@@ -341,20 +341,16 @@ settings.tk-nuke.nukestudio.shot_step:
 
 # project
 settings.tk-nuke.render.project:
-  apps:
-  menu_favourites:
   location: "@engines.tk-nuke.location"
 
 # asset_step
 settings.tk-nuke.render.asset_step:
   apps:
     tk-nuke-writenode: "@settings.tk-nuke-writenode.asset"
-  menu_favourites:
   location: "@engines.tk-nuke.location"
 
 # shot_step
 settings.tk-nuke.render.shot_step:
   apps:
     tk-nuke-writenode: "@settings.tk-nuke-writenode.shot"
-  menu_favourites:
   location: '@engines.tk-nuke.location'
