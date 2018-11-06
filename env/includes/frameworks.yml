@@ -24,13 +24,13 @@ frameworks:
   # desktopserver - provides a server to run local commands.
   tk-framework-desktopserver_v1.x.x:
     location:
-      version: v1.3.4
+      version: v1.3.7
       type: app_store
       name: tk-framework-desktopserver
   # qtwidgets - collection of Toolkit related QT Widgets
   tk-framework-qtwidgets_v2.x.x:
     location:
-      version: v2.8.1
+      version: v2.8.2
       type: app_store
       name: tk-framework-qtwidgets
   # shotgunutils v4 - Shotgun Related Utilities
