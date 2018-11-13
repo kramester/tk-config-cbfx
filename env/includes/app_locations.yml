@@ -28,8 +28,15 @@ ToolkitComponent: &ToolkitComponent CustomNonProjectEntity03
 
 # nuke tools app
 apps.tk-nuke-tools.location:
-  type: dev
-  path: R:\code\work\anthony.kramer\shotgun\apps\tk-nuke-tools
+  ### Toolkit App Entity
+  type: shotgun
+  entity_type: *ToolkitComponent
+  name: tk-nuke-tools
+  field: sg_uploaded_app
+  version: 11927
+  ### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-nuke-tools
 
 # about
 apps.tk-multi-about.location:
