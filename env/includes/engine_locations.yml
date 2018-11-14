@@ -31,7 +31,7 @@ engines.tk-desktop.location:
 engines.tk-flame.location:
   type: app_store
   name: tk-flame
-  version: v1.14.4
+  version: v1.14.6
 
 # Houdini
 engines.tk-houdini.location:
@@ -49,7 +49,7 @@ engines.tk-houdini.location:
 engines.tk-maya.location:
   type: app_store
   name: tk-maya
-  version: v0.9.3
+  version: v0.9.4
 
 # Motion Builder
 engines.tk-motionbuilder.location:

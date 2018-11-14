@@ -159,6 +159,39 @@ paths:
     asset_publish_area: assets/{sg_asset_type}/{Asset}/{Step}/publish
 
     ##########################################################################################
+    # Nuke Tools Paths
+    #
+
+    nuke_tools_all_path:
+      definition: '../_all'
+      root_name: nuke_tools
+
+    nuke_tools_all_gizmos_cbfx:
+      definition: '../_all/gizmos/cbfx'
+      root_name: nuke_tools
+
+    nuke_tools_all_gizmos_nukepedia:
+      definition: '../_all/gizmos/nukepedia'
+      root_name: nuke_tools
+
+    nuke_tools_all_toolsets:
+      definition: '../_all/toolsets'
+      root_name: nuke_tools
+
+    nuke_tools_project_path:
+      definition: './'
+      root_name: nuke_tools
+
+    nuke_tools_project_gizmos:
+      definition: './gizmos'
+      root_name: nuke_tools
+
+    nuke_tools_project_toolsets:
+      definition: './toolsets'
+      root_name: nuke_tools
+
+
+    ##########################################################################################
     # Project level paths
     #
 
