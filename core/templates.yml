@@ -183,7 +183,7 @@ paths:
       root_name: nuke_tools
 
     nuke_tools_project_gizmos:
-      definition: './gizmos'
+      definition: './gizmos/project'
       root_name: nuke_tools
 
     nuke_tools_project_toolsets:
