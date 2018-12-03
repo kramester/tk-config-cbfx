@@ -22,9 +22,9 @@ alias: &ToolkitComponent CustomNonProjectEntity03
 # ---- Multi apps
 
 # render app
-# apps.tk-multi-render.location:
-#   type: dev
-#   path: R:\code\work\anthony.kramer\shotgun\apps\tk-multi-render
+apps.tk-multi-render.location:
+  type: dev
+  path: R:\work\anthony.kramer\shotgun\apps\tk-multi-render
 
 # nuke tools app
 apps.tk-nuke-tools.location:
@@ -33,7 +33,7 @@ apps.tk-nuke-tools.location:
   entity_type: *ToolkitComponent
   name: tk-nuke-tools
   field: sg_uploaded_app
-  version: 12509
+  version: 12731
   ## Dev
   # type: dev
   # path: R:\work\anthony.kramer\shotgun\apps\tk-nuke-tools
