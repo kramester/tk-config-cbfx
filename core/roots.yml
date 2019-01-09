@@ -77,6 +77,10 @@ primary:
     shotgun_storage_id: 3
     default: true
 
+element_library:
+  description: path to the element Library
+  shotgun_storage_id: 103
+
 # primary:
 #     description: High speed storage for AMC projects
 #     shotgun_storage_id: 36
