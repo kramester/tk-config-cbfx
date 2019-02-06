@@ -3,7 +3,7 @@ import sgtk
 
 HookBaseClass = sgtk.get_hook_baseclass()
 
-class CopyLibraryPlugin(HookBaseClass):
+class CopyLibrarySourcePlugin(HookBaseClass):
     """
     Plugin for copying source elements to the element library
     """
