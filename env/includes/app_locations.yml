@@ -17,9 +17,26 @@ includes:
 ################################################################################
 # location descriptors for apps used in this configuration
 
-ToolkitComponent: &ToolkitComponent CustomNonProjectEntity03
+alias: &ToolkitComponent CustomNonProjectEntity03
 
 # ---- Multi apps
+
+# render app
+apps.tk-multi-render.location:
+  type: dev
+  path: R:\work\anthony.kramer\shotgun\apps\tk-multi-render
+
+# nuke tools app
+apps.tk-nuke-tools.location:
+  ### Toolkit App Entity
+  type: shotgun
+  entity_type: *ToolkitComponent
+  name: tk-nuke-tools
+  field: sg_uploaded_app
+  version: 12731
+  ## Dev
+  # type: dev
+  # path: R:\work\anthony.kramer\shotgun\apps\tk-nuke-tools
 
 # about
 apps.tk-multi-about.location:
@@ -37,15 +54,13 @@ apps.tk-multi-breakdown.location:
 apps.tk-multi-demo.location:
   type: app_store
   name: tk-multi-demo
-  version: v1.0.2
+  version: v1.1.0
 
 # launchapp
 apps.tk-multi-launchapp.location:
   type: app_store
   name: tk-multi-launchapp
-  version: v0.10.1
-  # type: dev
-  # path: S:\shotgun\apps\tk-multi-launchapp
+  version: v0.10.2
 
 # loader2
 apps.tk-multi-loader2.location:
@@ -57,7 +72,7 @@ apps.tk-multi-loader2.location:
 apps.tk-multi-publish2.location:
   type: app_store
   name: tk-multi-publish2
-  version: v2.1.7
+  version: v2.2.2
 
 # pythonconsole
 apps.tk-multi-pythonconsole.location:
@@ -79,9 +94,20 @@ apps.tk-multi-screeningroom.location:
 
 # setframerange
 apps.tk-multi-setframerange.location:
-  type: app_store
+  ### Toolkit App Entity
+  type: shotgun
+  entity_type: *ToolkitComponent
   name: tk-multi-setframerange
-  version: v0.3.0
+  field: sg_uploaded_app
+  version: 10339
+  ### App Store
+  # type: app_store
+  # name: tk-multi-setframerange
+  # version: v0.3.0
+  ### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-multi-setframerange
+
 
 # shotgun panel
 apps.tk-multi-shotgunpanel.location:
@@ -129,7 +155,7 @@ apps.tk-shotgun-folders.location:
 apps.tk-shotgun-launchfolder.location:
   type: app_store
   name: tk-shotgun-launchfolder
-  version: v0.1.5
+  version: v0.2.1
 
 # shotgun launchpublish
 apps.tk-shotgun-launchpublish.location:
@@ -185,9 +211,19 @@ apps.tk-nuke-quickreview.location:
 
 # writenode
 apps.tk-nuke-writenode.location:
+  ### Toolkit App Entity
+  type: shotgun
+  entity_type: *ToolkitComponent
   name: tk-nuke-writenode
-  type: app_store
-  version: v1.4.1
+  field: sg_uploaded_app
+  version: 11930
+  ### Dev
+  # type: dev
+  # path: R:\code\work\anthony.kramer\shotgun\apps\tk-nuke-writenode
+  ### App Store
+  # name: tk-nuke-writenode
+  # type: app_store
+  # version: v1.4.1
 
 # ---- Flame apps
 
@@ -195,7 +231,7 @@ apps.tk-nuke-writenode.location:
 apps.tk-flame-export.location:
   name: tk-flame-export
   type: app_store
-  version: v1.9.1
+  version: v1.9.2
 
 # flame review
 apps.tk-flame-review.location:

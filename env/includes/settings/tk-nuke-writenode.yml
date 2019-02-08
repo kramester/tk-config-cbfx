@@ -18,14 +18,15 @@ includes:
 # asset
 settings.tk-nuke-writenode.asset:
   template_script_work: nuke_asset_work
+  show_convert_actions: True
   write_nodes:
   - file_type: exr
     name: main output
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_asset_main
-    render_template: nuke_asset_main
+    render_template: nuke_asset_main_work
+    publish_template: nuke_asset_main_publish
     settings:
       autocrop: False
       channels: rgb
@@ -37,11 +38,12 @@ settings.tk-nuke-writenode.asset:
     tile_color: []
   - file_type: exr
     name: precomp
-    promote_write_knobs: [autocrop, datatype, compression]
+    # promote_write_knobs: [autocrop, datatype, compression]
+    promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_asset_precomp
-    render_template: nuke_asset_precomp
+    render_template: nuke_asset_precomp_work
+    publish_template: nuke_asset_precomp_publish
     settings:
       autocrop: True
       channels: all
@@ -53,11 +55,12 @@ settings.tk-nuke-writenode.asset:
     output_default: main
   - file_type: exr
     name: matte
-    promote_write_knobs: [autocrop]
+    # promote_write_knobs: [autocrop]
+    promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_asset_matte
-    render_template: nuke_asset_matte
+    render_template: nuke_asset_matte_work
+    publish_template: nuke_asset_matte_publish
     settings:
       autocrop: True
       channels: rgb
@@ -71,8 +74,8 @@ settings.tk-nuke-writenode.asset:
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_asset_review
-    render_template: nuke_asset_review
+    render_template: nuke_asset_review_work
+    publish_template: nuke_asset_review_publish
     settings:
       autocrop: False
       channels: rgb
@@ -89,14 +92,15 @@ settings.tk-nuke-writenode.asset:
 ## entire lines or the write nodes will break
 settings.tk-nuke-writenode.shot:
   template_script_work: nuke_shot_work
+  show_convert_actions: True
   write_nodes:
   - file_type: exr
     name: main output
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_shot_main
-    render_template: nuke_shot_main
+    render_template: nuke_shot_main_work
+    publish_template: nuke_shot_main_publish
     settings:
       autocrop: False
       channels: rgb
@@ -108,11 +112,12 @@ settings.tk-nuke-writenode.shot:
     tile_color: []
   - file_type: exr
     name: precomp
-    promote_write_knobs: [autocrop, datatype, compression]
+    # promote_write_knobs: [autocrop, datatype, compression]
+    promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_shot_precomp
-    render_template: nuke_shot_precomp
+    render_template: nuke_shot_precomp_work
+    publish_template: nuke_shot_precomp_publish
     settings:
       autocrop: True
       channels: all
@@ -124,11 +129,12 @@ settings.tk-nuke-writenode.shot:
     output_default: main
   - file_type: exr
     name: matte
-    promote_write_knobs: [autocrop]
+    # promote_write_knobs: [autocrop]
+    promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_shot_matte
-    render_template: nuke_shot_matte
+    render_template: nuke_shot_matte_work
+    publish_template: nuke_shot_matte_publish
     settings:
       autocrop: True
       channels: rgb
@@ -142,8 +148,8 @@ settings.tk-nuke-writenode.shot:
     promote_write_knobs: []
     proxy_publish_template:
     proxy_render_template:
-    publish_template: nuke_shot_review
-    render_template: nuke_shot_review
+    render_template: nuke_shot_review_work
+    publish_template: nuke_shot_review_publish
     settings:
       autocrop: False
       channels: rgb
