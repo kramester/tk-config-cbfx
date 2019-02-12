@@ -395,6 +395,13 @@ paths:
         definition: '@shot_work_area/images/@nuke_shot_precomp_filename'
     nuke_shot_precomp_publish:
         definition: '@shot_publish_area/images/@nuke_shot_precomp_filename'
+    # smartvector output
+    nuke_shot_smartvector_filename:
+        definition: '{Shot}_{Step}_smrt[-{nuke.output}]_v{version}/{Shot}_{Step}_smrt[-{nuke.output}]_v{version}.{SEQ}.exr'
+    nuke_shot_smartvector_work:
+        definition: '@shot_work_area/images/@nuke_shot_smartvector_filename'
+    nuke_shot_smartvector_publish:
+        definition: '@shot_publish_area/images/@nuke_shot_smartvector_filename'
     # matte output
     nuke_shot_matte_filename:
         definition: '{Shot}_{Step}_matte[-{nuke.output}]_v{version}/{Shot}_{Step}_matte[-{nuke.output}]_v{version}.{SEQ}.exr'
@@ -611,6 +618,13 @@ paths:
         definition: '@asset_work_area/images/@nuke_asset_precomp_filename'
     nuke_asset_precomp_publish:
         definition: '@asset_publish_area/images/@nuke_asset_precomp_filename'
+    # smartvector output
+    nuke_asset_smartvector_filename:
+        definition: '{Asset}_{Step}_smrt[-{nuke.output}]_v{version}/{Asset}_{Step}_smrt[-{nuke.output}]_v{version}.{SEQ}.exr'
+    nuke_asset_smartvector_work:
+        definition: '@asset_work_area/images/@nuke_asset_smartvector_filename'
+    nuke_asset_smartvector_publish:
+        definition: '@asset_publish_area/images/@nuke_asset_smartvector_filename'
     # matte output
     nuke_asset_matte_filename:
         definition: '{Asset}_{Step}_matte[-{nuke.output}]_v{version}/{Asset}_{Step}_matte[-{nuke.output}]_v{version}.{SEQ}.exr'
