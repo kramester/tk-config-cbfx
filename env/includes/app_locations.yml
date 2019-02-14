@@ -28,12 +28,12 @@ apps.tk-multi-render.location:
 
 # nuke tools app
 apps.tk-nuke-tools.location:
-  ### Toolkit App Entity
+  ## Toolkit App Entity
   type: shotgun
   entity_type: *ToolkitComponent
   name: tk-nuke-tools
   field: sg_uploaded_app
-  version: 12731
+  version: 20802
   ## Dev
   # type: dev
   # path: R:\work\anthony.kramer\shotgun\apps\tk-nuke-tools
@@ -48,7 +48,7 @@ apps.tk-multi-about.location:
 apps.tk-multi-breakdown.location:
   type: app_store
   name: tk-multi-breakdown
-  version: v1.5.0
+  version: v1.6.0
 
 # demo
 apps.tk-multi-demo.location:
@@ -66,13 +66,13 @@ apps.tk-multi-launchapp.location:
 apps.tk-multi-loader2.location:
   type: app_store
   name: tk-multi-loader2
-  version: v1.19.2
+  version: v1.19.3
 
 # publish2
 apps.tk-multi-publish2.location:
   type: app_store
   name: tk-multi-publish2
-  version: v2.2.2
+  version: v2.3.2
 
 # pythonconsole
 apps.tk-multi-pythonconsole.location:
@@ -131,7 +131,7 @@ apps.tk-multi-workfiles.location:
 apps.tk-multi-workfiles2.location:
   type: app_store
   name: tk-multi-workfiles2
-  version: v0.11.8
+  version: v0.11.9
 
 # ---- Shotgun apps
 
