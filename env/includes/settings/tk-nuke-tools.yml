@@ -24,4 +24,7 @@ settings.tk-nuke-tools:
   toolsets_path_templates:
   - nuke_tools_all_toolsets
   - nuke_tools_project_toolsets
+  plugin_path_templates:
+  - nuke_tools_all_plugins
+  - nuke_tools_project_plugins
   location: "@apps.tk-nuke-tools.location"

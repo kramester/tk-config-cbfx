@@ -31,13 +31,13 @@ engines.tk-desktop.location:
 engines.tk-flame.location:
   type: app_store
   name: tk-flame
-  version: v1.14.6
+  version: v1.14.7
 
 # Houdini
 engines.tk-houdini.location:
   type: app_store
   name: tk-houdini
-  version: v1.5.6
+  version: v1.6.0
 
 # Mari
 # engines.tk-mari.location:
@@ -49,7 +49,7 @@ engines.tk-houdini.location:
 engines.tk-maya.location:
   type: app_store
   name: tk-maya
-  version: v0.9.4
+  version: v0.9.6
 
 # Motion Builder
 engines.tk-motionbuilder.location:
@@ -71,7 +71,7 @@ engines.tk-nuke.location:
   ### App Store
   type: app_store
   name: tk-nuke
-  version: v0.11.4
+  version: v0.11.5
 
 
 # Photoshop
