@@ -15,4 +15,4 @@ type: "shotgun_step"
 name: "short_name"
 
 # doesnt create folder for ingest
-filters: [ { "path": "short_name", "relation": "not_in", "values": [ "ingest" ] } ]
+filters: [ { "path": "short_name", "relation": "not_in", "values": [ "ing", "igst", "ingest" ] } ]
