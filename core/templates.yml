@@ -177,7 +177,7 @@ paths:
       root_name: element_library
 
     library_element_version_filename:
-      definition: '@library_element_area/{version}/{library_element}_{version}.{SEQ}.exr'
+      definition: '@library_element_area/v{version}/{library_element}.v{version}.{SEQ}.exr'
       root_name: element_library
 
     ##########################################################################################

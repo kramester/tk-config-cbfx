@@ -25,14 +25,14 @@ settings.tk-multi-publish2.standalone:
   collector: "{self}/collector.py"
   publish_plugins:
   - name: Library Element Publish
-    hook: "{config}/tk-multi-publish2/library_publish.py"
+    hook: "{config}/tk-multi-publish2/library_element_publish.py"
     settings: {}
-  - name: Publish to Shotgun
-    hook: "{self}/publish_file.py"
-    settings: {}
-  - name: Upload for review
-    hook: "{self}/upload_version.py"
-    settings: {}
+  #- name: Publish to Shotgun
+  #  hook: "{self}/publish_file.py"
+  #  settings: {}
+  #- name: Upload for review
+  #  hook: "{self}/upload_version.py"
+  #  settings: {}
   help_url: *help_url
   location: "@apps.tk-multi-publish2.location"
 
