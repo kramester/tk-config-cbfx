@@ -169,7 +169,7 @@ paths:
     #
 
     library_element_area:
-      definition: '{library_element}/'
+      definition: '../{library_element}/'
       root_name: element_library
 
     library_element_source_area:

@@ -142,9 +142,11 @@ else:
 
         @tags.setter
         def tags(self, tagDict):
-            tagNames = [tag['name'] for tag in tagDict]
+            if isinstance(tagDict,dict):
+                tagNames = [tag['name'] for tag in tagDict]
+            else:
+                tagNames = tagDict
             self._tags.setText(",".join(tagNames))
-            #self._tags.set_value(tagDict)
 
 class LibraryElementPublishPlugin(HookBaseClass):
     """
@@ -263,6 +265,19 @@ class LibraryElementPublishPlugin(HookBaseClass):
         Validates the given item to check that it is okay to publish.
         Returns boolean to indicate validity.
         """
+        publisher = self.parent
+
+        elements = publisher.sgtk.shotgun.find('CustomNonProjectEntity01',[],['code'])
+
+        if settings['Element Name'].value in [element['code'] for element in elements]:
+            self.logger.warning("An element already exists in the element library with the name %s."%settings['Element Name'].value)
+            return False
+
+        tags = self.parseTags(settings['Element Tags'].value)
+        if tags == "Failed tag creation":
+            return False
+
+        settings['Element Tags'].value = tags
 
         return True
 
@@ -273,6 +288,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
         project_id = 227
         publisher = self.parent
 
+        #Gather fields from hook and settings
         srcPath = item.properties["path"]
         srcName = item.name
         library_path = publisher.sgtk.roots["element_library"]
@@ -281,6 +297,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
         category = settings["Element Category"].value
         tags = settings["Element Tags"].value
 
+        #Generate file paths using fields and templates
         sourceTemplate = publisher.sgtk.templates["library_element_source_area"]
         exrTemplate = publisher.sgtk.templates["library_element_version_filename"]
         fields = {"library_element" : name,
@@ -291,10 +308,15 @@ class LibraryElementPublishPlugin(HookBaseClass):
         exrOut = exrTemplate.apply_fields(fields)
         proxyOut = '\\'.join((srcDest,name + ".proxy.mov"))
 
-        nuke_entity = publisher.sgtk.shotgun.find_one("Software",[['projects', 'in', {'type': 'Project', 'id': project_id}],['engine', 'is', 'tk-nuke']],['code','version_names','windows_path','mac_path','linux_path'])
+        #Get paths to nuke for rendering
+        nuke_entity = publisher.sgtk.shotgun.find_one("Software",
+                                                    [['projects', 'in', {'type': 'Project', 'id': project_id}],
+                                                    ['engine', 'is', 'tk-nuke']],
+                                                    ['code','version_names','windows_path','mac_path','linux_path'])
         nuke_path = nuke_entity['windows_path'].replace('{version}',nuke_entity['version_names'])
         nuke_script = '\\'.join((os.path.dirname(os.path.abspath( __file__ )),'NukeRenderProxy.py'))
 
+        #Begin the publish process by copying the source files to the destination
         self.logger.info("Copying source file to library")
 
         if not os.path.exists(srcDest):
@@ -303,6 +325,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
 
         self.logger.info("Source copied to %s"%(srcDest))
 
+        #Create a new library element entity (CustomNonProjectEntity01)
         data = {
             "code": name,
             "sg_category": category,
@@ -311,6 +334,8 @@ class LibraryElementPublishPlugin(HookBaseClass):
         }
 
         element = publisher.sgtk.shotgun.create("CustomNonProjectEntity01", data)
+
+        #Set the context for version creation, and force the project to the library project
         context = publisher.sgtk.context_from_entity_dictionary(element)
         ctxDict = context.to_dict()
         ctxDict['project'] = {'type': 'Project', 'id': 227, 'name': 'Library'}
@@ -318,6 +343,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
 
         self.logger.info("Created library entity: %s"%(element))
 
+        #Generate a version entity that is attached to the created library element
         versiondata = {
             'project': context.project,
             'code': name + "_v001",
@@ -331,6 +357,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
 
         self.logger.info("Created version v001 enity: %s"%(version))
 
+        #Attach a published file entity to the created version 1 that will be the initial exr transcode
         publish = sgtk.util.register_publish(
             tk = publisher.sgtk,
             context = context,
@@ -346,11 +373,13 @@ class LibraryElementPublishPlugin(HookBaseClass):
 
         self.logger.info("Rendering v001 from Nuke")
 
+        #Use custom nuke script to output a proxy mov and initial exr transcode
         nukeCmd = '%s -t %s "%s,%s,%s"'%(nuke_path, nuke_script,'\\'.join((srcDest,srcName)),exrOut,proxyOut)
         os.popen(nukeCmd).read()
 
         self.logger.info("Uploading proxy movie to v001")
 
+        #Upload the rendered proxy mov to shotgun for use in the thumbnail
         publisher.sgtk.shotgun.upload("Version", version["id"], proxyOut, field_name = "sg_uploaded_movie", display_name = "proxy")
 
 
@@ -370,6 +399,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
                     tagList.append(newTag)
                 except:
                     self.logger.warning('Could not create new tag "%s". User does not have permission'%tag)
+                    return "Failed tag creation"
 
         return tagList
 
@@ -393,4 +423,4 @@ class LibraryElementPublishPlugin(HookBaseClass):
         return True
 
     def get_ui_settings(self, widget):
-        return {"Element Name" : widget.destName, "Element Source" : widget.source, "Element Category" : widget.category, "Element Tags" : self.parseTags(widget.tags)}
+        return {"Element Name" : widget.destName, "Element Source" : widget.source, "Element Category" : widget.category, "Element Tags" : widget.tags}
