@@ -22,9 +22,15 @@ def RenderProxyExr(args):
                     black_outside = True)
 
     wproxy = nuke.nodes.Write(file = outProxy,
+                    file_type = 'mov',
+                    channels = 'rgb',
+                    meta_codec = 'avc1',
                     create_directories = True)
 
     wexr = nuke.nodes.Write(file = outExr,
+                    file_type = 'exr',
+                    channels = 'all',
+                    compression = 'DWAA',
                     create_directories = True)
 
     #Connect inputs for nodes

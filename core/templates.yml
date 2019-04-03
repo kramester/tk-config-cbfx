@@ -176,8 +176,16 @@ paths:
       definition: '@library_element_area/src'
       root_name: element_library
 
+    library_element_version_area:
+      definition: '@library_element_area/v{version}'
+      root_name: element_library
+
     library_element_version_filename:
-      definition: '@library_element_area/v{version}/{library_element}.v{version}.{SEQ}.exr'
+      definition: '@library_element_version_area/{library_element}.v{version}.{SEQ}.exr'
+      root_name: element_library
+
+    library_element_version_proxy_filename:
+      definition: '@library_element_version_area/{library_element}.v{version}.proxy.mov'
       root_name: element_library
 
     ##########################################################################################

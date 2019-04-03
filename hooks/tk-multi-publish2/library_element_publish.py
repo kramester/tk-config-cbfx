@@ -299,6 +299,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
 
         #Generate file paths using fields and templates
         sourceTemplate = publisher.sgtk.templates["library_element_source_area"]
+        proxyTemplate = publisher.sgtk.templates["library_element_version_proxy_filename"]
         exrTemplate = publisher.sgtk.templates["library_element_version_filename"]
         fields = {"library_element" : name,
                 "version": 1,
@@ -306,7 +307,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
 
         srcDest = sourceTemplate.apply_fields(fields)
         exrOut = exrTemplate.apply_fields(fields)
-        proxyOut = '\\'.join((srcDest,name + ".proxy.mov"))
+        proxyOut = proxyTemplate.apply_fields(fields)
 
         #Get paths to nuke for rendering
         nuke_entity = publisher.sgtk.shotgun.find_one("Software",
