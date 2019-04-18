@@ -172,7 +172,7 @@ apps.tk-hiero-export.location:
   entity_type: *ToolkitComponent
   name: tk-hiero-export
   field: sg_uploaded_app
-  version: 1935
+  version: 35106 #v0.5.2-cbfx
   ### Dev
   # type: dev
   # path: R:\code\work\anthony.kramer\shotgun\apps\tk-hiero-export
