@@ -1,4 +1,5 @@
 import os
+import re
 import sgtk
 from shutil import copy
 
@@ -38,15 +39,6 @@ else:
         def __init__(self, parent, app, qtframework):
             super(LibraryElementUI, self).__init__(parent)
             self._app = app
-            self._initialized = False
-
-            #shotgun_fields = qtframework.import_module("shotgun_fields")
-
-            #self._fields_manager = shotgun_fields.ShotgunFieldManager(self)
-            #self._fields_manager.initialized.connect(self.on_initialized)
-            #self._fields_manager.initialize()
-
-            #self._fields_manager.register_entity_field_class('Tag','name',shotgun_fields.multi_entity_widget.MultiEntityWidget,self._fields_manager.EDITABLE)
 
             layout = QtGui.QFormLayout(self)
             self.setLayout(layout)
@@ -79,27 +71,12 @@ else:
             CatLayout.addWidget(self._category)
             layout.addRow(CatLayout)
 
-            TagLayout = QtGui.QHBoxLayout(self)
-            TagLabel = QtGui.QLabel("Tags: ", self)
-            self.tagModel = QtGui.QStringListModel()
-            self._tags = QtGui.QLineEdit(self)
-            completer = Completer()
-            self._tags.setCompleter(completer)
-            completer.setModel(self.tagModel)
-            #self._tags = self._fields_manager.create_widget('Tag','name')
-            TagLayout.addWidget(TagLabel)
-            TagLayout.addWidget(self._tags)
-            layout.addRow(TagLayout)
-
             self.updateFieldValues()
             self._initialized = True
 
         def updateFieldValues(self):
-            fields = self._app.sgtk.shotgun.find("CustomNonProjectEntity01",[],["sg_source","tags"])
+            fields = self._app.sgtk.shotgun.find("CustomNonProjectEntity01",[],["sg_source"])
             src = list(dict.fromkeys([s["sg_source"] for s in fields]))
-            tags = [s['name'] for s in self._app.sgtk.shotgun.find('Tag',[],['name'])]
-
-            self.tagModel.setStringList(tags)
             self.sourceModel.setStringList(src)
 
         @property
@@ -133,26 +110,10 @@ else:
                 i = 0
             self._category.setCurrentIndex(i)
 
-        @property
-        def tags(self):
-            #return self._tags.get_value()
-            if self._tags.text() == "":
-                return []
-            return self._tags.text().split(',')
-
-        @tags.setter
-        def tags(self, tagDict):
-            if isinstance(tagDict,dict):
-                tagNames = [tag['name'] for tag in tagDict]
-            else:
-                tagNames = tagDict
-            self._tags.setText(",".join(tagNames))
-
 class LibraryElementPublishPlugin(HookBaseClass):
     """
     Plugin for publishing elements to the element library
     """
-
 
     @property
     def icon(self):
@@ -196,7 +157,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
         return{
             "File Extensions": {
                 "type": "str",
-                "default": "jpeg, jpg, png, mov, mp4, exr, dpx, tga",
+                "default": "jpeg, jpg, png, mov, mp4, exr, dpx, tga, sgi",
                 "description": "File extensions of files to include"
             },
             "Element Name": {
@@ -213,11 +174,6 @@ class LibraryElementPublishPlugin(HookBaseClass):
                 "type": "str",
                 "default": "",
                 "description": "Category to submit the library element with"
-            },
-            "Element Tags": {
-                "type": "list",
-                "default": [],
-                "desciption": "Tags that will submit to the library element to allow easier searching"
             }
         }
 
@@ -245,6 +201,13 @@ class LibraryElementPublishPlugin(HookBaseClass):
         valid_extensions = [ext.strip().lstrip(".") for ext in settings["File Extensions"].value.split(",")]
 
         if extension in valid_extensions:
+            base = publisher.util.get_publish_name(file_path).lower()
+            if item.type == 'file.image.sequence':
+                base = re.sub('(_|\W)%\d\dd','',base)
+            name = base.replace('.'+extension,'')
+
+            settings["Element Name"].value = name
+
             self.logger.info(
                 "Copy Library Plugin accepted: %s"% (file_path),
                 extra={
@@ -273,11 +236,8 @@ class LibraryElementPublishPlugin(HookBaseClass):
             self.logger.warning("An element already exists in the element library with the name %s."%settings['Element Name'].value)
             return False
 
-        tags = self.parseTags(settings['Element Tags'].value)
-        if tags == "Failed tag creation":
-            return False
-
-        settings['Element Tags'].value = tags
+        self.logger.info('type: %s'%(item.type))
+        self.logger.info('name: %s'%(item.name))
 
         return True
 
@@ -289,13 +249,18 @@ class LibraryElementPublishPlugin(HookBaseClass):
         publisher = self.parent
 
         #Gather fields from hook and settings
-        srcPath = item.properties["path"]
         srcName = item.name
+
+        if item.type == 'file.image.sequence':
+            srcPaths = item.properties['sequence_paths']
+            #srcName = publisher.util.get_publish_name(item.properties["path"])
+        else:
+            srcPaths = [item.properties['path']]
+
         library_path = publisher.sgtk.roots["element_library"]
         name = settings["Element Name"].value
         source = settings["Element Source"].value
         category = settings["Element Category"].value
-        tags = settings["Element Tags"].value
 
         #Generate file paths using fields and templates
         sourceTemplate = publisher.sgtk.templates["library_element_source_area"]
@@ -322,7 +287,9 @@ class LibraryElementPublishPlugin(HookBaseClass):
 
         if not os.path.exists(srcDest):
             os.makedirs(srcDest)
-        copy(srcPath, srcDest)
+
+        for src in srcPaths:
+            copy(src, srcDest)
 
         self.logger.info("Source copied to %s"%(srcDest))
 
@@ -331,7 +298,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
             "code": name,
             "sg_category": category,
             "sg_source": source,
-            "tags": tags
+            "sg_status_list": 'rev'
         }
 
         element = publisher.sgtk.shotgun.create("CustomNonProjectEntity01", data)
@@ -350,7 +317,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
             'code': name + "_v001",
             'description': 'Initial EXR Sequence',
             'sg_path_to_frames': exrOut,
-            'sg_status_list': 'na',
+            'sg_status_list': 'vwd',
             'entity': element
         }
 
@@ -375,6 +342,7 @@ class LibraryElementPublishPlugin(HookBaseClass):
         self.logger.info("Rendering v001 from Nuke")
 
         #Use custom nuke script to output a proxy mov and initial exr transcode
+
         nukeCmd = '%s -t %s "%s,%s,%s"'%(nuke_path, nuke_script,'\\'.join((srcDest,srcName)),exrOut,proxyOut)
         os.popen(nukeCmd).read()
 
@@ -383,26 +351,6 @@ class LibraryElementPublishPlugin(HookBaseClass):
         #Upload the rendered proxy mov to shotgun for use in the thumbnail
         publisher.sgtk.shotgun.upload("Version", version["id"], proxyOut, field_name = "sg_uploaded_movie", display_name = "proxy")
 
-
-    def parseTags(self, tags):
-        if not tags or tags == '':
-            return []
-        app = self.parent
-        existingTags = app.sgtk.shotgun.find('Tag',[],['name'])
-        tagList = []
-        for tag in tags:
-            match = [t for t in existingTags if t["name"] == tag]
-            if match:
-                tagList.append(match[0])
-            else:
-                try:
-                    newTag = app.sgtk.shotgun.create("Tag", {"name" : tag})
-                    tagList.append(newTag)
-                except:
-                    self.logger.warning('Could not create new tag "%s". User does not have permission'%tag)
-                    return "Failed tag creation"
-
-        return tagList
 
     def finalize(self, settings, item):
         """
@@ -419,9 +367,8 @@ class LibraryElementPublishPlugin(HookBaseClass):
         widget.destName = settings["Element Name"]
         widget.source = settings["Element Source"]
         widget.category = settings["Element Category"]
-        widget.tags = settings["Element Tags"]
         widget.updateFieldValues()
         return True
 
     def get_ui_settings(self, widget):
-        return {"Element Name" : widget.destName, "Element Source" : widget.source, "Element Category" : widget.category, "Element Tags" : widget.tags}
+        return {"Element Name" : widget.destName, "Element Source" : widget.source, "Element Category" : widget.category}

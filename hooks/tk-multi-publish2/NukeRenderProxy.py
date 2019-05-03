@@ -1,4 +1,5 @@
 import nuke
+import os
 
 def RenderProxyExr(args):
 
@@ -8,6 +9,12 @@ def RenderProxyExr(args):
     inputFile = args[0].replace("\\","/")
     outExr = args[1].replace("\\","/")
     outProxy = args[2].replace("\\","/")
+
+    inputFolder = os.path.dirname(inputFile)
+
+    inputSequence = nuke.getFileNameList(inputFolder)
+    if inputSequence:
+        inputFile = '/'.join((inputFolder,inputSequence[0]))
 
     #Create read nodes, write nodes, and reformat
     r = nuke.nodes.Read()
