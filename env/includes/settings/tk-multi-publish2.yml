@@ -22,7 +22,8 @@ publish_help_url: &help_url "https://support.shotgunsoftware.com/hc/en-us/articl
 # ---- Stand alone publish
 
 settings.tk-multi-publish2.standalone:
-  collector: "{self}/collector.py"
+  #collector: "{self}/collector.py"
+  collector: "{config}/tk-multi-publish2/collector.py"
   publish_plugins:
   - name: Library Element Publish
     hook: "{config}/tk-multi-publish2/library_element_publish.py"
